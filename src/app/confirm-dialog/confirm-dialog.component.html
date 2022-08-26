@@ -1,0 +1,19 @@
+<mat-toolbar>
+<h1 mat-dialog-title class="prompt-font">{{data.title}}</h1>
+</mat-toolbar>
+
+<div style="margin: 15px 0"><mat-divider></mat-divider></div>
+
+<div mat-dialog-content>
+  <span class="prompt-font">
+    {{data.message}}
+  </span>
+</div>
+
+<div style="margin: 15px 0"><mat-divider></mat-divider></div>
+
+<div style="float:right;margin:20px;" class="prompt-font">
+  <button mat-raised-button color="warn" style="margin: 0 10px;" [mat-dialog-close]="true">ยืนยัน</button>
+  <button mat-raised-button  [mat-dialog-close]="false">ยกเลิก</button>
+</div>
+

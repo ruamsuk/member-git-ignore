@@ -1,0 +1,22 @@
+<div
+  fxLayoutAlign="center"
+  fxLayout="50%"
+  *ngIf="userData as user" style="margin-top: 15px;">
+  <mat-card>
+    <mat-card-content>
+      <p class="blue-font prompt-font-bold">
+        ส่งอีเมล์ยืนยันไปยัง:
+        <span class="red">{{user.email}}</span> แล้ว โปรดตรวจสอบในกล่องจดหมาย หรือในกล่องอีเมล์ขยะ
+      </p>
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="space-around end">
+
+      <button mat-stroked-button class="prompt-font-bold"
+              color="accent" (click)="doSignOut()"
+      >
+        ตกลง
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

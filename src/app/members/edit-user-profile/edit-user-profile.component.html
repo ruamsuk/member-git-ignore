@@ -1,0 +1,68 @@
+<mat-toolbar>
+  <span>Edit Profile</span>
+  <span fxFlex fxLayout fxLayoutAlign="end">
+        <button mat-stroked-button class="btn-dialog-close" (click)="onClose()" tabindex="-1">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </span>
+</mat-toolbar>
+
+<mat-dialog-content>
+  <form [formGroup]="service.newForm" class="normal-form" (submit)="onSubmit()">
+    <div class="control-container">
+      <input type="hidden" formControlName="id">
+      <mat-form-field class="demo-full-width">
+        <input type="text" matInput formControlName="displayName" placeholder="displayName">
+      </mat-form-field>
+      <mat-form-field class="demo-full-width">
+        <input type="email" matInput formControlName="email" placeholder="Email">
+      </mat-form-field>
+      <mat-form-field class="demo-full-width">
+        <input id="myInput" type="url" matInput formControlName="photoURL" placeholder="photoURL" readonly>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="emailVerified">Email verified.</mat-checkbox>
+      <div style="margin-top: 5px" *ngIf="currentFileUpload">
+        <mat-progress-bar
+          mode="determinate"
+          [value]="percentage" class="progress"></mat-progress-bar>
+        {{percentage}}%
+      </div>
+    </div>
+    <mat-dialog-actions>
+
+
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit"
+                [disabled]="service.newForm.invalid"
+                >Submit</button>
+        <button mat-raised-button
+                color="warn"
+                type="button"
+                (click)="onClose()"
+        >
+          Close
+        </button>
+        <button
+          mat-raised-button
+          color="" type="button"
+          (click)="fileInput.click()"
+          [disabled]="fileSelect"
+        >
+          เลือกรูปภาพ
+        </button>
+        <input
+          type="file"
+          (change)="selectFiles($event)"
+          hidden #fileInput>
+        <button
+          mat-flat-button
+          [disabled]="!selectedFiles" (click)="upload()"
+        >
+          Upload
+        </button>
+      </div>
+
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

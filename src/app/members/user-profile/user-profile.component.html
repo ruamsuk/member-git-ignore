@@ -1,0 +1,80 @@
+<div fxLayout="row"
+     fxLayout.lt-sm="column"
+     fxLayoutAlign="center center" fxFlex="600"
+     class="top-bottom-container"
+     style="margin-top: 100px; height: auto"
+>
+  <mat-card>
+    <mat-toolbar
+      color="primary"
+      style="margin-bottom: 15px;" class="prompt-font">User Profile</mat-toolbar>
+    <table class="sarabun">
+      <tr>
+        <th rowspan="6" scope="row" class="picture">
+          <img
+            class="media rounded-circle"
+            src="{{(userSignin?.photoURL) ? userSignin?.photoURL : 'assets/images/dummy-user.png'}}" alt="image" width="150px">
+        </th>
+      </tr>
+      <tr>
+        <th>User:</th><td>{{userSignin?.displayName}}</td>
+      </tr>
+      <tr>
+        <th>Email:</th><td>{{userSignin?.email}}</td>
+      </tr>
+      <tr>
+        <th>Creatd:</th><td>{{userCreated | thaiDate: 'mediumt'}}</td>
+      </tr>
+      <tr>
+        <th>Last SignIn:</th><td>{{userLastSignIn | thaiDate: 'mediumt'}}</td>
+      </tr>
+
+      <tr>
+        <th>&nbsp;</th>
+        <td>
+          <button
+            mat-icon-button
+            class="text-success mr-5"
+            *ngIf="userSignin?.emailVerified"
+            [disabled]="userSignin?.emailVerified">
+            <mat-icon class="green">verified_user</mat-icon>
+            <span class="green">email verified.</span>
+          </button>
+          <button
+            mat-icon-button
+            class="red"
+            *ngIf="!userSignin?.emailVerified"
+            (click)="sendEmailVerified()"
+            matTooltip="Click to send email verified!">
+            <mat-icon>unpublished</mat-icon>
+            email unverified.
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <mat-card-actions fxLayoutAlign="center">
+            <button mat-stroked-button
+                    *ngIf="userSignin?.emailVerified"
+                    (click)="goBack()"  matTooltip="Member list"
+                    matTooltipClass="tooltip"
+                    aria-label="Button that shows a red tooltip">
+              <mat-icon>west</mat-icon>
+
+            </button>
+            <button mat-stroked-button
+                    (click)="doEdit(userData)" matTooltip="Edit profile">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-stroked-button color="primary"
+                    (click)="changePassword()">Change password</button>
+            <button mat-stroked-button
+                    (click)="authService.signout()" matTooltip="SignOut">
+              <mat-icon>logout</mat-icon>
+            </button>
+          </mat-card-actions>
+        </td>
+      </tr>
+    </table>
+  </mat-card>
+</div>

@@ -1,0 +1,122 @@
+<mat-toolbar>
+  <span class="{{service.form.controls['id'].value ? 'red-font' : 'blue-font'}}">
+    {{service.form.controls['id'].value ? "Modify Member" : "New Member"}}
+  </span>
+  <span fxFlex fxLayout fxLayoutAlign="end">
+        <button mat-stroked-button class="btn-dialog-close" (click)="onClose()" tabindex="-1">
+            <mat-icon class="mat-18">clear</mat-icon>
+        </button>
+    </span>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="service.form"
+        class="normal-form" autocomplete="off"
+  >
+    <div>
+      <input type="hidden" formControlName="id">
+
+      <mat-form-field class="demo-full-width">
+        <mat-select placeholder="เลือกยศ"
+                    formControlName="rank"
+        >
+          <mat-option *ngFor="let rank of ranks"
+                      value="{{rank.value}}"
+                      class="sarabun">
+            {{rank.display}}
+          </mat-option>
+        </mat-select>
+        <mat-error>ต้องเลือกยศ</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="demo-full-width">
+        <input type="text"
+               matInput
+               placeholder="ชื่อ"
+               formControlName="firstname"
+               autocomplete="off"
+               required>
+        <mat-error>ต้องกรอกชื่อ ไม่ต้องมคำนำหน้า</mat-error>
+      </mat-form-field>
+      <mat-form-field class="demo-full-width">
+        <input
+          type="text"
+          matInput
+          formControlName="lastname"
+          autocomplete="off"
+          [placeholder]="'นามสกุล'">
+      </mat-form-field>
+      <mat-form-field class="demo-full-width">
+        <!-- <input <mat-input-container floatPlaceholder="auto"> -->
+        <input matInput
+               placeholder="วันเดือนปีเกิด"
+               [matDatepicker]="picker"
+               formControlName="birthdate"
+               required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="demo-full-width">
+        <input
+          type="text"
+          matInput
+          formControlName="address"
+          autocomplete="off"
+          [placeholder]="'ที่อยู่ ถนน ตำบล'">
+      </mat-form-field>
+      <mat-form-field class="demo-full-width">
+        <input
+          type="text"
+          matInput
+          formControlName="district"
+          autocomplete="off"
+          [placeholder]="'อำเภอ'">
+      </mat-form-field>
+      <mat-form-field class="demo-full-width">
+        <input
+          type="text"
+          matInput
+          formControlName="province"
+          autocomplete="off"
+          [placeholder]="'จังหวัด'">
+      </mat-form-field>
+      <mat-form-field class="demo-full-width">
+        <input
+          type="text"
+          matInput
+          formControlName="zip"
+          autocomplete="off"
+          [placeholder]="'รหัสไปรษณีย์'">
+      </mat-form-field>
+      <mat-form-field class="demo-full-width">
+        <input
+          type="text"
+          matInput
+          formControlName="phone"
+          autocomplete="off"
+          [placeholder]="'โทรศัพท์'">
+      </mat-form-field>
+
+      <mat-form-field class="demo-full-width">
+        <mat-select placeholder="เลือกสถานะ"
+                    formControlName="alive" required
+        >
+          <mat-option *ngFor="let alive of alives"
+                      value="{{alive.value}}"
+                      class="sarabun">
+            {{alive.display}}
+          </mat-option>
+        </mat-select>
+        <mat-error>ต้องเลือกสถานะ</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="end">
+  <button mat-button [mat-dialog-close]="true">Cancel</button>
+  <button type="submit"
+          mat-raised-button
+          mat-dialog-close color="primary" (click)="onSubmit()"
+          [disabled]="service.form.invalid">Submit</button>
+</mat-dialog-actions>

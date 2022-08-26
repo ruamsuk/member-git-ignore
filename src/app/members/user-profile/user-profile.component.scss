@@ -1,0 +1,47 @@
+table {
+  border-collapse: collapse;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 16px;
+  //margin-bottom: 1rem;
+  margin: 0 auto;
+  //padding-left: 1.5rem;
+  color: #212529;
+  //border: 1px solid red;
+  width: auto;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-bottom: 1px solid #dee2e6;
+}
+
+table th {
+  text-align: right;
+  padding-right: 5px;
+  //width: 250px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+th.picture {
+  text-align: left;
+  padding: 10px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#close {
+  width: 100px;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+::ng-deep .mat-tooltip {
+  background: red !important;
+  font-size: 14px !important;
+}

@@ -1,0 +1,69 @@
+.outerContainer {
+  padding: 5px;
+  border: 1px solid #b6b6b6;
+  box-sizing: content-box;
+  width: 50%;
+}
+
+div.container {
+  color: #eeeeee;
+  margin-bottom: 10px;
+
+}
+
+div.container > div {
+  height: 50px;
+  width: 50px;
+  background-color: blue;
+}
+
+.mat-cell {
+  font-family: 'Sarabun', sans-serif !important;
+  font-size: 1rem;
+}
+
+.mat-column-id {
+  width: 32px;
+  border-right: 1px solid #f0f0f4;
+  //padding-right: 5px;
+  text-align: center;
+}
+
+.mat-column-key {
+  width: 100px;
+  border-left: 1px solid #f0f0f4;
+  padding-right: 5px;
+  text-align: center;
+}
+
+.mat-column-userName {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mat-column-role {
+  padding-left: 10px;
+  border-left: 1px solid #f0f0f4;
+}
+
+.mat-header-cell {
+  font-weight: bold !important;
+  font-family: 'Prompt', sans-serif;
+  font-size: 16px;
+  background-color: rgb(248,248,248);
+  color: #000000 !important;
+}
+
+.cell-align {
+  text-align: center;
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+}
+
+::ng-deep .mat-tooltip {
+  background: red !important;
+  font-size: 12px;
+}

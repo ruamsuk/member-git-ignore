@@ -1,1 +1,273 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&family=Thasadith&family=Sarabun&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap');
+
+
+body {
+  margin: 0; padding: 0; font-family: 'Prompt', sans-serif;
+  background-color: #f0f0f4;
+}
+
+.top-container {
+  margin-top: 30px;
+}
+
+button:not(:last-child) {
+  margin-right: 5px;
+}
+
+.red {
+  color: #ff0000;
+}
+
+.blue {
+  color: #0000ff;
+}
+.mat-tab-label .mat-tab-label-content {
+  font-family: 'Sarabun', sans-serif !important;
+  font-weight: bold;
+  color: #000000;
+}
+
+div.container {
+  /* margin: 20px 40px; */
+  padding: 1px;
+}
+
+.data-table {
+  max-height: 200px;
+  overflow: auto;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+form.normal-form {
+  margin: 10px;
+}
+
+.controls-container {
+  width: 100%;
+  padding: 5%;
+}
+
+.controls-container > * {
+  width: 100%;
+}
+
+.add-buttom-padding {
+  padding-bottom: 10px;
+}
+
+mat-radio-group mat-radio-button {
+  margin-left: 5px;
+}
+
+.button-row button {
+  margin: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+/* Mat table */
+mat-footer-row mat-footer-cell {
+  /*justify-content: center;
+  font-style: italic;*/
+  font-family: 'Prompt', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* filter controls */
+.search-div {
+  margin: 10px;
+}
+
+input.search-div {
+  font-family: 'Sarabun', sans-serif !important;
+}
+
+div.calendar-search {
+
+  text-align: center;
+}
+
+button.btn-search {
+  margin-left: 5px;
+}
+
+.search-form-field {
+  width: 60%;
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+.search-form-field div.mat-form-field-underline {
+  display: none;
+}
+.search-form-field div.mat-form-field-infix {
+  border-top: 0;
+}
+.search-form-field div.mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+.search-form-field div.mat-form-field-suffix button {
+  height: 32px;
+  width: 32px;
+}
+
+/* for dialog pop-up */
+.btn-dialog-close {
+  width: 45px;
+  min-width: 0 !important;
+  height: 40px;
+  padding: 0 !important;
+}
+
+/* mat-confirm-dialog (customised dialog) */
+.confirm-dialog-container .mat-dialog-container {
+  border-radius: .25em .25em .4em .4em;
+  padding: 0;
+}
+.confirm-dialog-container .content-container{
+  margin: 5px 5px 15px 5px;
+  color: #8f9cb5;
+  display: flex;
+}
+.confirm-dialog-container #close-icon{
+  margin-left: auto;
+  order: 2;
+  font-weight: bolder;
+}
+.confirm-dialog-container #close-icon:hover{
+  cursor: pointer;
+}
+
+.confirm-dialog-container #no-button{
+  height: 50px;
+  width: 50%;
+  background-color: #fc7169;
+  color:white;
+  border-radius: 0;
+}
+
+.confirm-dialog-container #yes-button{
+  height: 50px;
+  width: 50%;
+  background-color: #b6bece;
+  color:white;
+  border-radius: 0;
+}
+
+.confirm-dialog-container span.content-span {
+  padding: 35px 16px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* dataTable */
+mat-header-cell {
+  font-weight: bold !important;
+  font-family: 'Prompt', sans-serif;
+  font-size: 18px;
+  color: #000000 !important;
+}
+
+.prompt-font {
+  font-family: 'Prompt', sans-serif;
+}
+
+.prompt-font-bold {
+  font-family: 'Prompt', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+.sarabun {
+  font-family: 'Sarabun', sans-serif;
+}
+
+.plr-5 {
+  padding:0 15px;
+}
+
+.top-container {
+  margin-top: 15px;
+}
+
+.top-bottom-container {
+  margin: 100px 0 10px;
+}
+
+.red-font {
+  color: #ff0000;
+}
+
+.blue-font {
+  color: #0000ff;
+
+}
+
+.demo-full-width {
+  width: 100%;
+}
+
+.green {
+  color: #029902;
+}
+
+.ml-3 {
+  margin-left: 3px;
+}
+
+::ng-deep .snac-error {
+  background-color: red !important;
+  font-size: 12px !important;
+  color: white;
+}
+
+::ng-deep .snac-success {
+  background: #029902 !important;
+  color: #ffffff !important;
+  font-size: 12px;
+}
+
+.m-b-15 {
+  margin-bottom: 15px;
+}
+
+.conner {
+  text-align: right;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 100%;
+  z-index: 999999;
+  cursor: pointer;
+  line-height: 0;
+  display: block;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}

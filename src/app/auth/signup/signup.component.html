@@ -1,0 +1,92 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="top-bottom-container">
+  <div fxFlex="25%" fxFlex.lt-sm="100%" fxFlex.lt-md="30%" fxFlexFill>
+    <mat-card>
+      <mat-card-title>
+        <mat-toolbar>
+          <mat-icon>person_add_alt_1</mat-icon>
+          <span class="space prompt-font-bold blue-font">
+            ลงทะเบียน
+          </span>
+        </mat-toolbar>
+      </mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="px-2">
+          <mat-form-field class="demo-full-width" floatLabel="never">
+            <input
+              matInput type="text"
+              placeholder="Email"
+              formControlName="email" autocomplete="off">
+            <mat-icon matSuffix>mail_outline</mat-icon>
+            <mat-error *ngIf="form.get('email')!.hasError('required')">
+              ต้องกรอกอีเมล์
+            </mat-error>
+            <mat-error *ngIf="form.get('email')!.hasError('pattern')">
+              รูปแบบอีเมล์ไม่ถุกต้อง
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="demo-full-width" floatLabel="never">
+            <input
+              matInput [type]="hide ? 'password' : 'text'"
+              placeholder="Password"
+              formControlName="password" class="demo">
+            <span matTooltip="{{hide ? 'แสดงรหัส' : 'ซ่อนรหัส'}}" matSuffix>
+        <mat-icon (click)="hide = !hide" class="icon">
+          {{hide ? 'visibility' : 'visibility_off'}}
+        </mat-icon>
+        </span>
+            <mat-error *ngIf="form.get('password')!.hasError('required')">ต้องกรอกรหัสผ่าน</mat-error>
+            <mat-error *ngIf="form.get('password')!.hasError('minlength')">ต้องกรอกรหัสผ่านอย่างน้อย 6 อักขระ</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="demo-full-width" floatLabel="never">
+            <label>
+              <input
+                matInput [type]="hide1 ? 'password' : 'text'"
+                placeholder="Confirm password"
+                formControlName="repassword">
+            </label>
+            <span matTooltip="{{hide1 ? 'แสดงรหัส' : 'ซ่อนรหัส'}}" matSuffix>
+        <mat-icon (click)="hide1 = !hide1" class="icon">
+          {{hide1 ? 'visibility' : 'visibility_off'}}
+        </mat-icon>
+        </span>
+            <mat-error *ngIf="form.get('repassword')!.hasError('required')">ต้องยืนยันรหัสผ่าน</mat-error>
+            <mat-error *ngIf="form.get('repassword')!.hasError('confirmPassword')">รหัสผ่านไม่ตรงกัน</mat-error>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <!--<button
+          class="demo-full-width"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid || loading"
+          (click)="onSubmit()">
+          <i class="fas fa-sign-in-alt" *ngIf="!loading"></i>
+          <i class="fas fa-cog fa-spin fa-1x" *ngIf="loading"></i>
+          SUBMIT
+        </button>-->
+
+        <div style="text-align: center">
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [class.spinner]="loading"
+            [disabled]="form.invalid || loading"
+            (click)="onSubmit()"
+            class="demo-full-width"
+          >
+            Signin
+
+          </button>
+        </div>
+
+        <p class="text-center">
+          Already an account? <a routerLink="/auth/signin">Sign In</a>
+        </p>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

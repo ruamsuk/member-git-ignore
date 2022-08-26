@@ -1,0 +1,114 @@
+<mat-toolbar class="mat-primary">
+  <a routerLink="/">
+    <img src="assets/images/inquirer25.png" alt="logo">
+  </a>
+
+  <div fxFlex fxLayout fxLayoutAlign="end">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="My nav">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button *ngIf="(user)"
+              mat-menu-item (click)="goProfile()">
+        <mat-icon>supervised_user_circle</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button *ngIf="(user)"
+              mat-menu-item (click)="goMembers()">
+        <mat-icon>group</mat-icon>
+        <span>Members</span>
+      </button>
+      <button *ngIf="(user)"
+              mat-menu-item (click)="authService.signout()">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Sign Out</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<div fxLayoutAlign="center center" class="mt-15">
+  <mat-card>
+    <mat-card-header>
+      <h1 class="prompt-font-bold">
+        Users list
+      </h1>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="search-div">
+        <button mat-raised-button color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+        <div fxFlex *ngIf="isLoading" class="loading-shade">
+          <mat-spinner></mat-spinner>
+        </div>
+        <mat-form-field class="search-form-field" floatLabel="never">
+          <input matInput placeholder="Search" autocomplete="off"
+                 [ngModel]="searchKey"
+                 (keyup)="applyFilter($event)"
+                 #input class="sarabun">
+          <button
+            mat-button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            *ngIf="searchKey"
+            (click)="onSearchClear()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div><!--/search div -->
+
+      <table mat-table [dataSource]="dataSource" *ngIf="!(isFound)" matSort>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> #</th>
+          <td
+            mat-cell
+            *matCellDef="let index = index">
+            {{ (index + 1) + (paginator.pageIndex * paginator.pageSize) }}.
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+          <td mat-cell *matCellDef="let row">{{row.username}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+          <td [bgColor]="" mat-cell *matCellDef="let row">{{row.role}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="key">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let row">
+            <span matTooltip="แก้ไข">
+              <button mat-icon-button
+                      (click)="onUpdate(row)">
+                <mat-icon color="primary">mode_edit</mat-icon>
+              </button>
+            </span>
+            <span matTooltip="ลบ">
+              <button mat-icon-button (click)="onDelete(row)">
+                <mat-icon color="warn">delete_outline</mat-icon>
+              </button>
+            </span>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+
+      <div>
+        <mat-paginator *ngIf="!(isFound)" [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
+                       [pageSizeOptions]="[5, 10, 20, 30]" showFirstLastButtons>
+        </mat-paginator>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+

@@ -1,0 +1,64 @@
+<mat-toolbar fxLayout="row wrap" fxLayoutAlign="center center">
+      <span class="sarabun blue-font">
+          <i class="fal fa-address-card fa-1x my-icon"></i>
+        รายละเอียดสมาชิก
+      </span>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <table class="table table-striped">
+    <tr>
+      <th>ยศ ชื่อ สกุล: </th>
+      <td>{{member?.rank}}{{member?.firstname}} {{member?.lastname}}</td>
+    </tr>
+    <tr>
+      <th>วันเกิด: </th>
+      <td>
+        {{member?.birthdate | thaiDate: 'mediumd'}}
+      </td>
+    </tr>
+    <tr>
+      <th>ที่อยู่: </th>
+      <td>{{member?.address}}</td>
+    </tr><tr>
+    <th>อำเภอ จังหวัด: </th>
+    <td>{{member?.district}} {{member?.province}} {{member?.zip}}</td>
+  </tr>
+    <tr>
+      <th>โทรศัพท์: </th>
+      <td>{{member?.phone}}</td>
+    </tr>
+    <tr>
+      <th>อายุ:</th>
+      <td>
+        <mat-chip-list>
+          <mat-chip color="accent" selected>{{age}}</mat-chip>
+        </mat-chip-list>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        สถานะภาพ:
+      </th>
+      <td>
+        <span class="{{member?.alive == 'เสียชีวิตแล้ว' ? 'red' : 'blue'}}">
+          {{member?.alive}}
+        </span>
+      </td>
+    </tr>
+  </table>
+</mat-dialog-content>
+<div>
+  <mat-divider></mat-divider>
+</div>
+<mat-dialog-actions fxLayoutAlign="end">
+  <button mat-raised-button color="primary" (click)="onClose()" id="close">
+    <i class="far fa-times-circle fa-1x"></i>
+    &nbsp; ปิด
+  </button>
+</mat-dialog-actions>
+<div>
+
+</div>
+
+

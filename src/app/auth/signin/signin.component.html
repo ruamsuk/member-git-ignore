@@ -1,0 +1,69 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="top-bottom-container">
+  <div fxFlex="25%" fxFlex.lt-sm="100%" fxFlex.lt-md="35%" fxFlexFill>
+    <mat-card>
+      <mat-card-title>
+        <mat-toolbar fxLayout="row wrap" fxLayoutAlign="center center">
+          <span><img src="assets/images/logo.png" alt="logo"></span>
+        </mat-toolbar>
+      </mat-card-title>
+      <mat-card-content>
+
+        <form [formGroup]="loginForm">
+          <mat-form-field class="demo-full-width">
+            <input
+              type="email"
+              matInput
+              placeholder="Email"
+              formControlName="email"
+              autocomplete="off">
+            <span matSuffix><mat-icon>email</mat-icon></span>
+            <mat-error>อีเมล์ไม่ถูกต้อง หรือไม่ได้กรอกอีเมล์</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="demo-full-width">
+            <input
+              type="{{hide ? 'password' : 'text'}}"
+              matInput
+              placeholder="Password"
+              formControlName="password"
+              autocomplete="off" (keyup)="onKeyup($event)">
+            <span matTooltip="{{hide ? 'Text' : 'Password'}}" matSuffix>
+            <mat-icon (click)="hide = !hide" class="icon">
+            {{hide ? 'visibility' : 'visibility_off'}}
+          </mat-icon>
+          </span>
+            <mat-error>ต้องกรอกพาสเวิร์ดอย่างน้อย 6 อักขระ</mat-error>
+          </mat-form-field>
+
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="m-b-15">
+
+          <div style="text-align: center">
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              [class.spinner]="loading"
+              [disabled]="loginForm.invalid || loading"
+              (click)="onSubmit()"
+              class="demo-full-width"
+            >
+                Signin
+
+            </button>
+          </div>
+
+          <div fxLayoutAlign="center center" *ngIf="!loading">
+            <a routerLink="/members/change-password">forgot password</a>
+          </div>
+          <div fxLayoutAlign="center center" *ngIf="!loading">
+            <a routerLink="/auth/signup">Register</a>
+          </div>
+
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<label>
+  <input type="file"
+         class="text-nowrap text-truncate"
+         (change)="selectFile($event)">
+</label>
+
+<button
+  class="btn btn-success btn-sm"
+  [disabled]="!selectedFiles"
+  (click)="upload()"
+>
+  Upload
+</button>
+
+<div *ngIf="currentFileUpload" style="width: 100%; margin-top: 10px">
+  <mat-progress-bar mode="determinate" value="{{ percentage }}" color="accent"></mat-progress-bar>
+  {{ percentage }}%
+</div>
+
