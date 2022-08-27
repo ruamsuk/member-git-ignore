@@ -7,12 +7,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserRole } from '../../models/roles.model';
 import { AuthService } from '../auth.service';
 import { map, takeUntil } from 'rxjs/operators';
-import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
 import User = firebase.User;
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { Members } from '../../models/members.model';
-import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
+ import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -72,7 +71,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   isLoggedIn() {
     this.afAuth.authState
       .pipe(takeUntil(this.destroy$))
-      .subscribe(user => {
+      .subscribe((user: any) => {
         if (user) {
           this.user = user;
         }
@@ -128,9 +127,9 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.notifier.next();
+    this.notifier.next(true);
     this.notifier.complete();
-    this.destroy$.next();
+    this.destroy$.next(true);
     this.destroy$.complete();
   }
 

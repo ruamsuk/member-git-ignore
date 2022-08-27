@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { AngularFireAuthGuard,
   redirectLoggedInTo,
-  redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+  redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
 import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({

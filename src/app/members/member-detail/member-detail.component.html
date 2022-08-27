@@ -9,24 +9,38 @@
   <table class="table table-striped">
     <tr>
       <th>ยศ ชื่อ สกุล: </th>
-      <td>{{member?.rank}}{{member?.firstname}} {{member?.lastname}}</td>
+      <td> <span *ngIf="member">{{member.rank }}{{member.firstname}} {{member.lastname}}</span></td>
     </tr>
     <tr>
       <th>วันเกิด: </th>
       <td>
-        {{member?.birthdate | thaiDate: 'mediumd'}}
+        <span *ngIf="member">
+          {{member.birthdate | thaiDate: 'mediumd'}}
+        </span>
       </td>
     </tr>
     <tr>
       <th>ที่อยู่: </th>
-      <td>{{member?.address}}</td>
+      <td>
+        <span *ngIf="member">
+        {{member.address}}
+      </span>
+      </td>
     </tr><tr>
     <th>อำเภอ จังหวัด: </th>
-    <td>{{member?.district}} {{member?.province}} {{member?.zip}}</td>
+    <td>
+      <span *ngIf="member">
+        {{member.district}} {{member.province}} {{member.zip}}
+      </span>
+      </td>
   </tr>
     <tr>
       <th>โทรศัพท์: </th>
-      <td>{{member?.phone}}</td>
+      <td>
+        <span *ngIf="member">
+          {{member.phone}}
+        </span>
+       </td>
     </tr>
     <tr>
       <th>อายุ:</th>
@@ -41,8 +55,8 @@
         สถานะภาพ:
       </th>
       <td>
-        <span class="{{member?.alive == 'เสียชีวิตแล้ว' ? 'red' : 'blue'}}">
-          {{member?.alive}}
+        <span *ngIf="member" class="{{member.alive == 'เสียชีวิตแล้ว' ? 'red' : 'blue'}}">
+          {{member.alive}}
         </span>
       </td>
     </tr>

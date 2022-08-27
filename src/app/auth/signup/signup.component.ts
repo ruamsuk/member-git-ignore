@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../../services/app.service';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
       email: this.form.value.email,
       password: this.form.value.password
     })
-     .then(r => {
+     .then(() => {
        this.loading = false;
      });
   }
