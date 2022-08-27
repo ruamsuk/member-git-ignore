@@ -42,7 +42,7 @@
             "allowedCommonJsDependencies": [
               "moment"
             ],
-            "outputPath": "dist/member-git-ignore",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,13 +63,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "15mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "22kb",
+                  "maximumError": "40kb"
                 }
               ],
               "fileReplacements": [
